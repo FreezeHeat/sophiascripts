@@ -6,11 +6,11 @@ Aero settings, wallpaper size, etc, are given the best performance settings(NOT 
 
 NOTE: Restore point disabled, power users will create their own
 
-`sophia_pwsh51_poweruser.ps1` for Powershell 5.1
+`sophia_pwsh51_poweruser.ps1` for Powershell 5.1  
 `sophia_pwsh7_poweruser.ps1` for Powershell 7
 
 ## For Regular Users
-`sophia_pwsh51_regular.ps1` for Powershell 5.1
+`sophia_pwsh51_regular.ps1` for Powershell 5.1  
 `sophia_pwsh7_regular.ps1` for Powershell 7
 
 ## For Laptops, disable the following settings
