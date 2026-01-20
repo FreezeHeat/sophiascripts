@@ -1,18 +1,15 @@
-<#
+﻿<#
 	.SYNOPSIS
-	Default preset file for "Sophia Script for Windows 11 (PowerShell 7)"
+	Default preset file for "Sophia Script for Windows 11"
 
 	.VERSION
-	6.8.7
+	7.0.4
 
 	.DATE
-	22.06.2025
+	05.01.2026
 
 	.COPYRIGHT
-	(c) 2014—2025 Team Sophia
-
-	.THANKS
-	Thanks to all https://forum.ru-board.com members involved
+	(c) 2014—2026 Team Sophia
 
 	.DESCRIPTION
 	Place the "#" char before function if you don't want to run it
@@ -22,9 +19,6 @@
 	.EXAMPLE Run the whole script
 	.\Sophia.ps1
 
-	.EXAMPLE Run the script by specifying the module functions as an argument
-	.\Sophia.ps1 -Functions "DiagTrackService -Disable", "DiagnosticDataLevel -Minimal", UninstallUWPApps
-
 	.EXAMPLE Download and expand the latest Sophia Script version archive (without running) according which Windows and PowerShell versions it is run on
 	iwr script.sophia.team -useb | iex
 
@@ -32,9 +26,7 @@
 	iwr sl.sophia.team -useb | iex
 
 	.NOTES
-	Supported Windows 11 versions
-	Version: 24H2+
-	Editions: Home/Pro/Enterprise
+	Supports Windows 11 24H2+ Home/Pro/Enterprise
 
 	.NOTES
 	To use Enable tab completion to invoke for functions if you do not know function name dot source the Import-TabCompletion.ps1 script first:
@@ -51,6 +43,10 @@
 	.LINK Discord
 	https://discord.gg/sSryhaEv79
 
+	.DONATE
+	https://ko-fi.com/farag
+	https://boosty.to/teamsophia
+
 	.NOTES
 	https://forum.ru-board.com/topic.cgi?forum=62&topic=30617#15
 	https://habr.com/companies/skillfactory/articles/553800/
@@ -64,122 +60,42 @@
 #>
 
 #Requires -RunAsAdministrator
-#Requires -Version 7.5
+#Requires -Version 5.1
 
-[CmdletBinding()]
-param
-(
-	[Parameter(Mandatory = $false)]
-	[string[]]
-	$Functions
-)
+#region Initial Actions
+$Global:Failed = $false
 
-Clear-Host
-
-$Host.UI.RawUI.WindowTitle = "Sophia Script for Windows 11 v6.8.7 (PowerShell 7) | Made with $([System.Char]::ConvertFromUtf32(0x1F497)) of Windows | $([System.Char]0x00A9) Team Sophia, 2014$([System.Char]0x2013)2025"
-
-# Checking whether all files were expanded before running
-$ScriptFiles = @(
-	"$PSScriptRoot\Localizations\de-DE\Sophia.psd1",
-	"$PSScriptRoot\Localizations\en-US\Sophia.psd1",
-	"$PSScriptRoot\Localizations\es-ES\Sophia.psd1",
-	"$PSScriptRoot\Localizations\fr-FR\Sophia.psd1",
-	"$PSScriptRoot\Localizations\hu-HU\Sophia.psd1",
-	"$PSScriptRoot\Localizations\it-IT\Sophia.psd1",
-	"$PSScriptRoot\Localizations\pl-PL\Sophia.psd1",
-	"$PSScriptRoot\Localizations\pt-BR\Sophia.psd1",
-	"$PSScriptRoot\Localizations\ru-RU\Sophia.psd1",
-	"$PSScriptRoot\Localizations\tr-TR\Sophia.psd1",
-	"$PSScriptRoot\Localizations\uk-UA\Sophia.psd1",
-	"$PSScriptRoot\Localizations\zh-CN\Sophia.psd1",
-	"$PSScriptRoot\Module\Sophia.psm1",
-	"$PSScriptRoot\Manifest\SophiaScript.psd1"
-)
-if (($ScriptFiles | Test-Path) -contains $false)
-{
-	Write-Information -MessageData "" -InformationAction Continue
-	Write-Warning -Message "There are no files in the script folder. Please, re-download the archive and follow the guide: https://github.com/farag2/Sophia-Script-for-Windows?tab=readme-ov-file#how-to-use."
-	Write-Information -MessageData "" -InformationAction Continue
-
-	Write-Verbose -Message "https://t.me/sophia_chat" -Verbose
-	Write-Verbose -Message "https://discord.gg/sSryhaEv79" -Verbose
-
-	exit
-}
-
+# Unload and import module
 Remove-Module -Name SophiaScript -Force -ErrorAction Ignore
+Import-Module -Name $PSScriptRoot\Manifest\SophiaScript.psd1 -PassThru -Force
 
-# PowerShell 7 doesn't load en-us localization automatically if there is no localization folder in user's language which is determined by $PSUICulture
-# https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/import-localizeddata?view=powershell-7.3
-# https://github.com/PowerShell/PowerShell/pull/19896
-try
-{
-	Import-LocalizedData -BindingVariable Global:Localization -UICulture $PSUICulture -BaseDirectory $PSScriptRoot\Localizations -FileName Sophia -ErrorAction Stop
-}
-catch
-{
-	Import-LocalizedData -BindingVariable Global:Localization -UICulture en-US -BaseDirectory $PSScriptRoot\Localizations -FileName Sophia
-}
+# Load private functions
+Get-ChildItem -Path $PSScriptRoot\Module\private | Foreach-Object -Process {. $_.FullName}
 
-# Checking whether script is the correct PowerShell version
-try
-{
-	Import-Module -Name $PSScriptRoot\Manifest\SophiaScript.psd1 -PassThru -Force -ErrorAction Stop
-}
-catch [System.InvalidOperationException]
-{
-	Write-Warning -Message ($Localization.UnsupportedPowerShell -f $PSVersionTable.PSVersion.Major, $PSVersionTable.PSVersion.Minor)
-
-	Write-Verbose -Message "https://t.me/sophia_chat" -Verbose
-	Write-Verbose -Message "https://discord.gg/sSryhaEv79" -Verbose
-
-	exit
-}
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-# Preset configuration starts here
-# Отсюда начинается настройка пресета
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-<#
-	.SYNOPSIS
-	Run the script by specifying functions as an argument
-	Запустить скрипт, указав в качестве аргумента функции
-
-	.EXAMPLE
-	.\Sophia.ps1 -Functions "DiagTrackService -Disable", "DiagnosticDataLevel -Minimal", UninstallUWPApps
-
-	.NOTES
-	Use commas to separate funtions
-	Разделяйте функции запятыми
-#>
-if ($Functions)
-{
-	Invoke-Command -ScriptBlock {InitialActions}
-
-	foreach ($Function in $Functions)
-	{
-		Invoke-Expression -Command $Function
-	}
-
-	# The "PostActions" and "Errors" functions will be executed at the end
-	Invoke-Command -ScriptBlock {PostActions; Errors}
-
-	exit
-}
-
-#region Protection
-# The mandatory checks. If you want to disable a warning message about whether the preset file was customized, remove the "-Warning" argument
-# Обязательные проверки. Чтобы выключить предупреждение о необходимости настройки пресет-файла, удалите аргумент "-Warning"
+# "-Warning" argument enables and disables a warning message about whether the preset file was customized
+# Аргумент "-Warning" включает и выключает предупреждение о необходимости настройки пресет-файла
 InitialActions -Warning
 
+# Global variable if checks failed
+if ($Global:Failed)
+{
+	exit
+}
+#endregion Initial Actions
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# Preset configuration starts here                                    #
+# Настройка пресет-файла начинается здесь                             #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+#region Protection
 # Enable script logging. Log will be recorded into the script folder. To stop logging just close console or type "Stop-Transcript"
 # Включить логирование работы скрипта. Лог будет записываться в папку скрипта. Чтобы остановить логгирование, закройте консоль или наберите "Stop-Transcript"
 # Logging
 
 # Create a restore point
 # Создать точку восстановления
-# CreateRestorePoint
+CreateRestorePoint
 #endregion Protection
 
 #region Privacy & Telemetry
@@ -307,30 +223,14 @@ BingSearch -Disable
 # Enable Bing search in Start Menu (default value)
 # Включить поиск через Bing в меню "Пуск" (значение по умолчанию)
 # BingSearch -Enable
-
-# Do not show recommendations for tips, shortcuts, new apps, and more in Start menu
-# Не показать рекомендации с советами, сочетаниями клавиш, новыми приложениями и т. д. в меню "Пуск"
-StartRecommendationsTips -Hide
-
-# Show recommendations for tips, shortcuts, new apps, and more in Start menu (default value)
-# Показать рекомендации с советами, сочетаниями клавиш, новыми приложениями и т. д. в меню "Пуск" (значение по умолчанию)
-# StartRecommendationsTips -Show
-
-# Do not show Microsoft account-related notifications on Start Menu in Start menu
-# Не показывать в меню "Пуск" уведомления, связанные с учетной записью Microsoft
-StartAccountNotifications -Hide
-
-# Show Microsoft account-related notifications on Start Menu in Start menu (default value)
-# Переодически показывать в меню "Пуск" уведомления, связанные с учетной записью Microsoft (значение по умолчанию)
-# StartAccountNotifications -Show
 #endregion Privacy & Telemetry
 
 #region UI & Personalization
-# Show the "This PC" icon on Desktop
+# Show "This PC" icon on Desktop
 # Отобразить значок "Этот компьютер" на рабочем столе
 ThisPC -Show
 
-# Hide the "This PC" icon on Desktop (default value)
+# Hide "This PC" icon on Desktop (default value)
 # Скрыть "Этот компьютер" на рабочем столе (значение по умолчанию)
 # ThisPC -Hide
 
@@ -382,7 +282,7 @@ FileExplorerCompactMode -Disable
 # Включить компактный вид проводника
 # FileExplorerCompactMode -Enable
 
-# Do not show sync provider notification within File Explorer
+# Hide sync provider notification within File Explorer
 # Не показывать уведомления поставщика синхронизации в проводнике
 OneDriveFileExplorerAd -Hide
 
@@ -486,6 +386,14 @@ SecondsInSystemClock -Show
 # Скрыть секунды на часах на панели задач (значение по умолчанию)
 # SecondsInSystemClock -Hide
 
+# Show time in Notification Center
+# Показывать секунды в центре уведомлений
+ClockInNotificationCenter -Show
+
+# Hide time in Notification Center (default value)
+# Скрыть секунды в центре уведомлений (значение по умолчанию)
+# ClockInNotificationCenter -Hide
+
 # Combine taskbar buttons and always hide labels (default value)
 # Объединить кнопки панели задач и всегда скрывать метки (значение по умолчанию)
 TaskbarCombine -Always
@@ -548,7 +456,7 @@ FirstLogonAnimation -Disable
 
 # Set the quality factor of the JPEG desktop wallpapers to maximum
 # Установить коэффициент качества обоев рабочего стола в формате JPEG на максимальный
-# JPEGWallpapersQuality -Max
+JPEGWallpapersQuality -Max
 
 # Set the quality factor of the JPEG desktop wallpapers to default
 # Установить коэффициент качества обоев рабочего стола в формате JPEG по умолчанию
@@ -580,21 +488,21 @@ AppsLanguageSwitch -Enable
 
 # When I grab a windows's title bar and shake it, minimize all other windows
 # При захвате заголовка окна и встряхивании сворачиваются все остальные окна
-# AeroShaking -Enable
+AeroShaking -Enable
 
 # When I grab a windows's title bar and shake it, don't minimize all other windows (default value)
 # При захвате заголовка окна и встряхивании не сворачиваются все остальные окна (значение по умолчанию)
-AeroShaking -Disable
+# AeroShaking -Disable
 
-# Download and install free dark "Windows 11 Cursors Concept" cursors from Jepri Creations
-# Скачать и установить бесплатные темные курсоры "Windows 11 Cursors Concept" от Jepri Creations
+# Download and install free dark "Windows 11 Cursors Concept" cursors from Jepri Creations. Internet connection required
+# Скачать и установить бесплатные темные курсоры "Windows 11 Cursors Concept" от Jepri Creations. Требуется соединение с интернетом
 # https://www.deviantart.com/jepricreations/art/Windows-11-Cursors-Concept-886489356
-Cursors -Dark
+Install-Cursors -Dark
 
-# Download and install free light "Windows 11 Cursors Concept" cursors from Jepri Creations
-# Скачать и установить бесплатные светлые курсоры "Windows 11 Cursors Concept" от Jepri Creations
+# Download and install free light "Windows 11 Cursors Concept" cursors from Jepri Creations. Internet connection required
+# Скачать и установить бесплатные светлые курсоры "Windows 11 Cursors Concept" от Jepri Creations. Требуется соединение с интернетом
 # https://www.deviantart.com/jepricreations/art/Windows-11-Cursors-Concept-886489356
-# Cursors -Light
+# Install-Cursors -Light
 
 # Set default cursors
 # Установить курсоры по умолчанию
@@ -616,25 +524,69 @@ NavigationPaneExpand -Disable
 # Развернуть до открытой папки область навигации
 # NavigationPaneExpand -Enable
 
-# Remove Recommended section in Start Menu. Not applicable to Home edition
-# Удалить раздел "Рекомендуем" в меню "Пуск". Неприменимо к редакции Home
+# Hide recently added apps in Start
+# Не показывать недавно добавленные приложения на начальном экране
+RecentlyAddedStartApps -Hide
+
+# Show recently added apps in Start (default value)
+# Показывать недавно добавленные приложения на начальном экране (значение по умолчанию)
+# RecentlyAddedStartApps -Show
+
+# Hide most used apps in Start (default value) (default value)
+# Не показывать наиболее часто используемые приложения на начальном экране (значение по умолчанию)
+MostUsedStartApps -Hide
+
+# Show most used Apps in Start
+# Показывать наиболее часто используемые приложения на начальном экране
+# MostUsedStartApps -Show
+
+# Remove Recommended section in Start
+# Удалить раздел "Рекомендуем" на начальном экране
 StartRecommendedSection -Hide
 
-# Show Recommended section in Start Menu (default value). Not applicable to Home edition
-# Показывать раздел "Рекомендуем" в меню "Пуск" (значение по умолчанию). Неприменимо к редакции Home
+# Show Recommended section in Start (default value)
+# Показывать раздел "Рекомендуем" на начальном экране
 # StartRecommendedSection -Show
+
+# Hide recommendations for tips, shortcuts, new apps, and more in Start
+# Не показать рекомендации с советами, сочетаниями клавиш, новыми приложениями и т. д. на начальном экране
+StartRecommendationsTips -Hide
+
+# Show recommendations for tips, shortcuts, new apps, and more in Start (default value)
+# Показать рекомендации с советами, сочетаниями клавиш, новыми приложениями и т. д. на начальном экране (значение по умолчанию)
+# StartRecommendationsTips -Show
+
+# Hide Microsoft account-related notifications on Start
+# Не отображать на начальном экране уведомления, касающиеся учетной записи Microsoft
+StartAccountNotifications -Hide
+
+# Show Microsoft account-related notifications on Start (default value)
+# Отображать на начальном экране уведомления, касающиеся учетной записи Microsoft (значение по умолчанию)
+# StartAccountNotifications -Show
+
+# Show default Start layout (default value)
+# Отображать стандартный макет начального экрана (значение по умолчанию)
+# StartLayout -Default
+
+# Show more pins on Start
+# Отображать больше закреплений на начальном экране
+StartLayout -ShowMorePins
+
+# Show more recommendations on Start
+# Отображать больше рекомендаций на начальном экране
+# StartLayout -ShowMoreRecommendations
 #endregion UI & Personalization
 
 #region OneDrive
-# Uninstall OneDrive. The OneDrive user folder won't be removed
-# Удалить OneDrive. Папка пользователя OneDrive не будет удалена
-OneDrive -Uninstall
+# Uninstall OneDrive. OneDrive user folder won't be removed if any file found there
+# Удалить OneDrive. Папка пользователя OneDrive не будет удалена при обнаружении в ней файлов
+# OneDrive -Uninstall
 
-# Install OneDrive 64-bit (default value)
+# Install OneDrive (default value)
 # Установить OneDrive 64-бит (значение по умолчанию)
 # OneDrive -Install
 
-# Install OneDrive 64-bit all users to %ProgramFiles% depending which installer is triggered
+# Install OneDrive all users to %ProgramFiles% depending which installer is triggered
 # Установить OneDrive 64-бит для всех пользователей в %ProgramFiles% в зависимости от того, как запускается инсталлятор
 # OneDrive -Install -AllUsers
 #endregion OneDrive
@@ -656,13 +608,13 @@ Hibernation -Disable
 # Включить режим гибернации (значение по умолчанию)
 # Hibernation -Enable
 
-# Disable the Windows 260 characters path limit
-# Отключить ограничение Windows на 260 символов в пути
-Win32LongPathLimit -Disable
+# Enable Windows long paths support which is limited for 260 characters by default
+# Включить поддержку длинных путей, ограниченных по умолчанию 260 символами
+Win32LongPathsSupport -Enable
 
-# Enable the Windows 260 character path limit (default value)
-# Включить ограничение Windows на 260 символов в пути (значение по умолчанию)
-# Win32LongPathLimit -Enable
+# Disable Windows long paths support which is limited for 260 characters by default (default value)
+# Отключить поддержку длинных путей, ограниченных по умолчанию 260 символами (значение по умолчанию)
+# Win32LongPathsSupport -Disable
 
 # Display Stop error code when BSoD occurs
 # Отображать код Stop-ошибки при появлении BSoD
@@ -700,8 +652,8 @@ WindowsManageDefaultPrinter -Disable
 	Disable the Windows features using the pop-up dialog box
 	If you want to leave "Multimedia settings" element in the advanced settings of Power Options do not disable the "Media Features" feature
 
-	Если вы хотите оставить параметр "Параметры мультимедиа" в дополнительных параметрах схемы управления питанием, не отключайте "Компоненты для работы с медиа"
 	Отключить компоненты Windows, используя всплывающее диалоговое окно
+	Если вы хотите оставить параметр "Параметры мультимедиа" в дополнительных параметрах схемы управления питанием, не отключайте "Компоненты для работы с мультимедиа"
 #>
 WindowsFeatures -Disable
 
@@ -709,13 +661,8 @@ WindowsFeatures -Disable
 # Включить компоненты Windows, используя всплывающее диалоговое окно
 # WindowsFeatures -Enable
 
-<#
-	Uninstall optional features using the pop-up dialog box
-	If you want to leave "Multimedia settings" element in the advanced settings of Power Options do not uninstall the "Media Features" feature
-
-	Удалить дополнительные компоненты, используя всплывающее диалоговое окно
-	Если вы хотите оставить параметр "Параметры мультимедиа" в дополнительных параметрах схемы управления питанием, не удаляйте компонент "Компоненты для работы с медиа"
-#>
+# Uninstall optional features using the pop-up dialog box
+# Удалить дополнительные компоненты, используя всплывающее диалоговое окно
 WindowsCapabilities -Uninstall
 
 # Install optional features using the pop-up dialog box
@@ -819,27 +766,20 @@ Set-UserShellFolderLocation -Root
 #>
 # Set-UserShellFolderLocation -Default
 
-# Use the latest installed .NET runtime for all apps
-# Использовать последнюю установленную среду выполнения .NET для всех приложений
-LatestInstalled.NET -Enable
+# Use .NET Framework 4.8.1 for old apps
+# Использовать .NET Framework 4.8.1 для устаревших программ
+# LatestInstalled.NET -Enable
 
-# Do not use the latest installed .NET runtime for all apps (default value)
-# Не использовать последнюю установленную версию .NET для всех приложений (значение по умолчанию)
+# Do not use .NET Framework 4.8.1 for old apps (default value)
+# Не использовать .NET Framework 4.8.1 для устаревших программ (значение по умолчанию)
 # LatestInstalled.NET -Disable
 
-<#
-	Save screenshots by pressing Win+PrtScr on the Desktop
-	The function will be applied only if the preset is configured to remove the OneDrive application, or the app was already uninstalled
-	Otherwise the backup functionality for the "Desktop" and "Pictures" folders in OneDrive breaks
-
-	Сохранять скриншоты по нажатию Win+PrtScr на рабочий стол
-	Функция будет применена только в случае, если в пресете настроено удаление приложения OneDrive или приложение уже удалено,
-	иначе в OneDrive ломается функционал резервного копирования для папок "Рабочий стол" и "Изображения"
-#>
+# Save screenshots on the Desktop when pressing Windows+PrtScr or using Windows+Shift+S
+# Сохранять скриншоты по нажатию Windows+PrtScr или Windows+Shift+S на рабочий стол
 WinPrtScrFolder -Desktop
 
-# Save screenshots by pressing Win+PrtScr in the Pictures folder (default value)
-# Cохранять скриншоты по нажатию Win+PrtScr в папку "Изображения" (значение по умолчанию)
+# Save screenshots in the Pictures folder when pressing Windows+PrtScr or using Windows+Shift+S (default value)
+# Cохранять скриншоты по нажатию Windows+PrtScr или Windows+Shift+S в папку "Изображения" (значение по умолчанию)
 # WinPrtScrFolder -Default
 
 <#
@@ -859,14 +799,6 @@ RecommendedTroubleshooting -Automatically
 	Чтобы заработала данная функция, уровень сбора диагностических данных ОС будет установлен на "Необязательные диагностические данные" и включится создание отчетов об ошибках Windows
 #>
 # RecommendedTroubleshooting -Default
-
-# Launch folder windows in a separate process
-# Запускать окна с папками в отдельном процессе
-FoldersLaunchSeparateProcess -Enable
-
-# Do not launch folder windows in a separate process (default value)
-# Не запускать окна с папками в отдельном процессе (значение по умолчанию)
-# FoldersLaunchSeparateProcess -Disable
 
 # Disable and delete reserved storage after the next update installation
 # Отключить и удалить зарезервированное хранилище после следующей установки обновлений
@@ -932,6 +864,14 @@ SaveRestartableApps -Enable
 # Выключить автоматическое сохранение моих перезапускаемых приложений из системы и перезапускать их при повторном входе (значение по умолчанию)
 # SaveRestartableApps -Disable
 
+# Do not restore previous folder windows at logon (default value)
+# Не восстанавливать прежние окна папок при входе в систему (значение по умолчанию)
+RestorePreviousFolders -Disable
+
+# Restore previous folder windows at logon
+# Восстанавливать прежние окна папок при входе в систему
+# RestorePreviousFolders -Enable
+
 # Enable "Network Discovery" and "File and Printers Sharing" for workgroup networks
 # Включить сетевое обнаружение и общий доступ к файлам и принтерам для рабочих групп
 NetworkDiscovery -Enable
@@ -971,18 +911,18 @@ DefaultTerminalApp -WindowsTerminal
 # Установить Windows Console Host как приложение терминала по умолчанию для размещения пользовательского интерфейса для приложений командной строки (значение по умолчанию)
 # DefaultTerminalApp -ConsoleHost
 
-# Install the latest Microsoft Visual C++ Redistributable Packages 2015–2022 (x86/x64)
-# Установить последнюю версию распространяемых пакетов Microsoft Visual C++ 2015–2022 (x86/x64)
-Install-VCRedist -Redistributables 2015_2022_x86, 2015_2022_x64
+# Install the latest Microsoft Visual C++ Redistributable Packages 2015–2026 (x86/x64). Internet connection required
+# Установить последнюю версию распространяемых пакетов Microsoft Visual C++ 2015–2026 (x86/x64). Требуется соединение с интернетом
+Install-VCRedist -Redistributables 2015_2026_x86, 2015_2026_x64
 
-# Install the latest .NET Desktop Runtime 8, 9 x64
-#Установить последнюю версию .NET Desktop Runtime 8, 9 x64
-Install-DotNetRuntimes -Runtimes NET8x64, NET9x64
+# Install the latest .NET Desktop Runtime 8, 9, 10 x64. Internet connection required
+# Установить последнюю версию .NET Desktop Runtime 8, 9, 10 x64. Требуется соединение с интернетом
+Install-DotNetRuntimes -Runtimes NET8, NET9, NET10
 
 # Enable proxying only blocked sites from the unified registry of Roskomnadzor. The function is applicable for Russia only
 # Включить проксирование только заблокированных сайтов из единого реестра Роскомнадзора. Функция применима только для России
 # https://antizapret.prostovpn.org
-# RKNBypass -Enable
+RKNBypass -Enable
 
 # Disable proxying only blocked sites from the unified registry of Roskomnadzor (default value)
 # Выключить проксирование только заблокированных сайтов из единого реестра Роскомнадзора (значение по умолчанию)
@@ -999,7 +939,7 @@ PreventEdgeShortcutCreation -Channels Stable, Beta, Dev, Canary
 
 # Back up the system registry to %SystemRoot%\System32\config\RegBack folder when PC restarts and create a RegIdleBackup in the Task Scheduler task to manage subsequent backups
 # Создавать копии реестра при перезагрузке ПК и задание RegIdleBackup в Планировщике для управления последующими резервными копиями
-# RegistryBackup -Enable
+RegistryBackup -Enable
 
 # Do not back up the system registry to %SystemRoot%\System32\config\RegBack folder (default value)
 # Не создавать копии реестра при перезагрузке ПК (значение по умолчанию)
@@ -1007,34 +947,15 @@ PreventEdgeShortcutCreation -Channels Stable, Beta, Dev, Canary
 #endregion System
 
 #region WSL
-<#
-	Enable Windows Subsystem for Linux (WSL), install the latest WSL Linux kernel version, and a Linux distribution using a pop-up form
-	The "Receive updates for other Microsoft products" setting will enabled automatically to receive kernel updates
-
-	Установить подсистему Windows для Linux (WSL), последний пакет обновления ядра Linux и дистрибутив Linux, используя всплывающую форму
-	Параметр "При обновлении Windows получать обновления для других продуктов Майкрософт" будет включен автоматически в Центре обновлении Windows, чтобы получать обновления ядра
-#>
+# Enable Windows Subsystem for Linux (WSL), install the latest WSL Linux kernel version, and a Linux distribution using a pop-up form. Internet connection required
+# Установить подсистему Windows для Linux (WSL), последний пакет обновления ядра Linux и дистрибутив Linux, используя всплывающую форму. Требуется соединение с интернетом
 # Install-WSL
 #endregion WSL
-
-#region Start menu
-# Show default Start layout (default value)
-# Отображать стандартный макет начального экрана (значение по умолчанию)
-# StartLayout -Default
-
-# Show more pins on Start
-# Отображать больше закреплений на начальном экране
-StartLayout -ShowMorePins
-
-# Show more recommendations on Start
-# Отображать больше рекомендаций на начальном экране
-# StartLayout -ShowMoreRecommendations
-#endregion Start menu
 
 #region UWP apps
 # Uninstall UWP apps using the pop-up dialog box
 # Удалить UWP-приложения, используя всплывающее диалоговое окно
-UninstallUWPApps
+Uninstall-UWPApps
 
 <#
 	Uninstall UWP apps for all users using the pop-up dialog box
@@ -1043,7 +964,7 @@ UninstallUWPApps
 	Удалить UWP-приложения для всех пользователей, используя всплывающее диалоговое окно
 	Пакеты приложений не будут установлены для новых пользователей, если отмечена галочка "Для всех пользователей"
 #>
-# UninstallUWPApps -ForAllUsers
+# Uninstall-UWPApps -ForAllUsers
 #endregion UWP apps
 
 #region Gaming
@@ -1180,13 +1101,13 @@ PowerShellScriptsLogging -Enable
 # Выключить ведение журнала для всех вводимых сценариев PowerShell в журнале событий Windows PowerShell (значение по умолчанию)
 # PowerShellScriptsLogging -Disable
 
-# Microsoft Defender SmartScreen doesn't marks downloaded files from the Internet as unsafe
-# Microsoft Defender SmartScreen не помечает скачанные файлы из интернета как небезопасные
-AppsSmartScreen -Disable
-
 # Microsoft Defender SmartScreen marks downloaded files from the Internet as unsafe (default value)
 # Microsoft Defender SmartScreen помечает скачанные файлы из интернета как небезопасные (значение по умолчанию)
-# AppsSmartScreen -Enable
+AppsSmartScreen -Enable
+
+# Microsoft Defender SmartScreen doesn't marks downloaded files from the Internet as unsafe
+# Microsoft Defender SmartScreen не помечает скачанные файлы из интернета как небезопасные
+# AppsSmartScreen -Disable
 
 # Disable the Attachment Manager marking files that have been downloaded from the Internet as unsafe
 # Выключить проверку Диспетчером вложений файлов, скачанных из интернета, как небезопасные
@@ -1195,14 +1116,6 @@ SaveZoneInformation -Disable
 # Enable the Attachment Manager marking files that have been downloaded from the Internet as unsafe (default value)
 # Включить проверку Диспетчера вложений файлов, скачанных из интернета как небезопасные (значение по умолчанию)
 # SaveZoneInformation -Enable
-
-# Disable Windows Script Host. Blocks WSH from executing .js and .vbs files
-# Отключить Windows Script Host. Блокирует запуск файлов .js и .vbs
-# WindowsScriptHost -Disable
-
-# Enable Windows Script Host (default value)
-# Включить Windows Script Host (значение по умолчанию)
-# WindowsScriptHost -Enable
 
 # Enable Windows Sandbox. Applicable only to Professional, Enterprise and Education editions
 # Включить Windows Sandbox. Применимо только к редакциям Professional, Enterprise и Education
