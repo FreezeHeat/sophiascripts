@@ -234,6 +234,7 @@ ThisPC -Show
 # Скрыть "Этот компьютер" на рабочем столе (значение по умолчанию)
 # ThisPC -Hide
 
+# NOTE: Some users may want to comment this
 # Do not use item check boxes
 # Не использовать флажки для выбора элементов
 CheckBoxes -Disable
@@ -242,6 +243,7 @@ CheckBoxes -Disable
 # Использовать флажки для выбора элементов (значение по умолчанию)
 # CheckBoxes -Enable
 
+# NOTE: Casual users may want to comment this
 # Show hidden files, folders, and drives
 # Отобразить скрытые файлы, папки и диски
 HiddenItems -Enable
@@ -250,6 +252,7 @@ HiddenItems -Enable
 # Не показывать скрытые файлы, папки и диски (значение по умолчанию)
 # HiddenItems -Disable
 
+# NOTE: Casual users may want to comment this
 # Show file name extensions
 # Отобразить расширения имён файлов
 FileExtensions -Show
@@ -314,6 +317,7 @@ RecycleBinDeleteConfirmation -Enable
 # Не запрашивать подтверждение на удаление файлов в корзину (значение по умолчанию)
 # RecycleBinDeleteConfirmation -Disable
 
+# NOTE: Casual users may want to comment this
 # Hide recently used files in Quick access
 # Скрыть недавно использовавшиеся файлы на панели быстрого доступа
 QuickAccessRecentFiles -Hide
@@ -322,6 +326,7 @@ QuickAccessRecentFiles -Hide
 # Показать недавно использовавшиеся файлы на панели быстрого доступа (значение по умолчанию)
 # QuickAccessRecentFiles -Show
 
+# NOTE: Casual users may want to comment this
 # Hide frequently used folders in Quick access
 # Скрыть недавно используемые папки на панели быстрого доступа
 QuickAccessFrequentFolders -Hide
@@ -346,6 +351,7 @@ TaskbarWidgets -Hide
 # Отобразить кнопку "Мини-приложения" на панели задач (значение по умолчанию)
 # TaskbarWidgets -Show
 
+# NOTE: Some users may want to comment this
 # Hide the search on the taskbar
 # Скрыть поле или значок поиска на панели задач
 TaskbarSearch -Hide
@@ -370,6 +376,7 @@ SearchHighlights -Hide
 # Показать главное в поиске (значение по умолчанию)
 # SearchHighlights -Show
 
+# NOTE: Casual users may want to comment this
 # Hide the Task view button from the taskbar
 # Скрыть кнопку "Представление задач" с панели задач
 TaskViewButton -Hide
@@ -378,6 +385,7 @@ TaskViewButton -Hide
 # Отобразить кнопку "Представление задач" на панели задач (значение по умолчанию)
 # TaskViewButton -Show
 
+# NOTE: Some users many want to comment this
 # Show seconds on the taskbar clock
 # Показывать секунды на часах на панели задач
 SecondsInSystemClock -Show
@@ -430,6 +438,7 @@ ControlPanelView -LargeIcons
 # Просмотр иконок Панели управления как: категория (значение по умолчанию)
 # ControlPanelView -Category
 
+# NOTE: Some users may want to comment this
 # Set the default Windows mode to dark
 # Установить режим Windows по умолчанию на темный
 WindowsColorMode -Dark
@@ -438,6 +447,7 @@ WindowsColorMode -Dark
 # Установить режим Windows по умолчанию на светлый (значение по умолчанию)
 # WindowsColorMode -Light
 
+# NOTE: Some users may want to comment this
 # Set the default app mode to dark
 # Установить цвет режима приложения на темный
 AppColorMode -Dark
@@ -454,6 +464,7 @@ FirstLogonAnimation -Disable
 # Показывать анимацию при первом входе в систему после обновления (значение по умолчанию)
 # FirstLogonAnimation -Enable
 
+# NOTE: Power users may want to comment this
 # Set the quality factor of the JPEG desktop wallpapers to maximum
 # Установить коэффициент качества обоев рабочего стола в формате JPEG на максимальный
 JPEGWallpapersQuality -Max
@@ -462,6 +473,7 @@ JPEGWallpapersQuality -Max
 # Установить коэффициент качества обоев рабочего стола в формате JPEG по умолчанию
 # JPEGWallpapersQuality -Default
 
+# NOTE: Casual users may want to comment this
 # Do not add the "- Shortcut" suffix to the file name of created shortcuts
 # Нe дoбaвлять "- яpлык" к имени coздaвaeмых яpлыков
 ShortcutsSuffix -Disable
@@ -470,6 +482,7 @@ ShortcutsSuffix -Disable
 # Дoбaвлять "- яpлык" к имени coздaвaeмых яpлыков (значение по умолчанию)
 # ShortcutsSuffix -Enable
 
+# NOTE: Some users may want to comment this
 # Use the Print screen button to open screen snipping
 # Использовать кнопку PRINT SCREEN, чтобы запустить функцию создания фрагмента экрана
 PrtScnSnippingTool -Enable
@@ -478,6 +491,7 @@ PrtScnSnippingTool -Enable
 # Не использовать кнопку PRINT SCREEN, чтобы запустить функцию создания фрагмента экрана (значение по умолчанию)
 # PrtScnSnippingTool -Disable
 
+# NOTE: Some users may want to comment this
 # Let me use a different input method for each app window
 # Позволить выбирать метод ввода для каждого окна
 AppsLanguageSwitch -Enable
@@ -486,6 +500,7 @@ AppsLanguageSwitch -Enable
 # Не использовать метод ввода для каждого окна (значение по умолчанию)
 # AppsLanguageSwitch -Disable
 
+# NOTE: Power users may want to comment this
 # When I grab a windows's title bar and shake it, minimize all other windows
 # При захвате заголовка окна и встряхивании сворачиваются все остальные окна
 AeroShaking -Enable
@@ -494,6 +509,7 @@ AeroShaking -Enable
 # При захвате заголовка окна и встряхивании не сворачиваются все остальные окна (значение по умолчанию)
 # AeroShaking -Disable
 
+# NOTE: Some users may want to comment this
 # Download and install free dark "Windows 11 Cursors Concept" cursors from Jepri Creations. Internet connection required
 # Скачать и установить бесплатные темные курсоры "Windows 11 Cursors Concept" от Jepri Creations. Требуется соединение с интернетом
 # https://www.deviantart.com/jepricreations/art/Windows-11-Cursors-Concept-886489356
@@ -508,6 +524,7 @@ Install-Cursors -Dark
 # Установить курсоры по умолчанию
 # Cursors -Default
 
+# NOTE: Some users may want to comment this
 # Do not group files and folder in the Downloads folder
 # Не группировать файлы и папки в папке Загрузки
 FolderGroupBy -None
@@ -516,6 +533,7 @@ FolderGroupBy -None
 # Группировать файлы и папки по дате изменения (значение по умолчанию)
 # FolderGroupBy -Default
 
+# NOTE: Some users may want to comment this
 # Do not expand to open folder on navigation pane (default value)
 # Не разворачивать до открытой папки область навигации (значение по умолчанию)
 NavigationPaneExpand -Disable
@@ -524,6 +542,7 @@ NavigationPaneExpand -Disable
 # Развернуть до открытой папки область навигации
 # NavigationPaneExpand -Enable
 
+# NOTE: Casual users may want to comment this
 # Hide recently added apps in Start
 # Не показывать недавно добавленные приложения на начальном экране
 RecentlyAddedStartApps -Hide
@@ -532,6 +551,7 @@ RecentlyAddedStartApps -Hide
 # Показывать недавно добавленные приложения на начальном экране (значение по умолчанию)
 # RecentlyAddedStartApps -Show
 
+# NOTE: Casual users may want to comment this
 # Hide most used apps in Start (default value) (default value)
 # Не показывать наиболее часто используемые приложения на начальном экране (значение по умолчанию)
 MostUsedStartApps -Hide
@@ -556,6 +576,7 @@ StartRecommendationsTips -Hide
 # Показать рекомендации с советами, сочетаниями клавиш, новыми приложениями и т. д. на начальном экране (значение по умолчанию)
 # StartRecommendationsTips -Show
 
+# NOTE: Casual users may want to comment this
 # Hide Microsoft account-related notifications on Start
 # Не отображать на начальном экране уведомления, касающиеся учетной записи Microsoft
 StartAccountNotifications -Hide
@@ -568,6 +589,7 @@ StartAccountNotifications -Hide
 # Отображать стандартный макет начального экрана (значение по умолчанию)
 # StartLayout -Default
 
+# NOTE: Some users may want to comment this
 # Show more pins on Start
 # Отображать больше закреплений на начальном экране
 StartLayout -ShowMorePins
@@ -582,6 +604,7 @@ StartLayout -ShowMorePins
 # Удалить OneDrive. Папка пользователя OneDrive не будет удалена при обнаружении в ней файлов
 # OneDrive -Uninstall
 
+# NOTE: Some users may want to uncomment this
 # Install OneDrive (default value)
 # Установить OneDrive 64-бит (значение по умолчанию)
 # OneDrive -Install
@@ -591,6 +614,9 @@ StartLayout -ShowMorePins
 # OneDrive -Install -AllUsers
 #endregion OneDrive
 
+# NOTE: Some users may want to comment this
+# NOTE: Casual users may want to comment this
+# NOTE: Power users may want to comment this
 #region System
 # Turn on Storage Sense
 # Включить Контроль памяти
@@ -600,6 +626,7 @@ StorageSense -Enable
 # Выключить Контроль памяти (значение по умолчанию)
 # StorageSense -Disable
 
+# NOTE: Laptop users may want to comment this
 # Disable hibernation. Not recommended for laptops
 # Отключить режим гибернации. Не рекомендуется для ноутбуков
 Hibernation -Disable
@@ -624,6 +651,8 @@ BSoDStopError -Enable
 # Не отображать код Stop-ошибки при появлении BSoD (значение по умолчанию)
 # BSoDStopError -Disable
 
+# NOTE: Some users may want to comment this
+# NOTE: Casual users may want to comment this
 # Choose when to be notified about changes to your computer: never notify
 # Настройка уведомления об изменении параметров компьютера: никогда не уведомлять
 AdminApprovalMode -Never
@@ -632,6 +661,7 @@ AdminApprovalMode -Never
 # Настройка уведомления об изменении параметров компьютера: уведомлять меня только при попытках приложений внести изменения в компьютер (значение по умолчанию)
 # AdminApprovalMode -Default
 
+# NOTE: Some users may want to comment this
 # Turn off Delivery Optimization
 # Выключить оптимизацию доставки
 DeliveryOptimization -Disable
@@ -640,6 +670,8 @@ DeliveryOptimization -Disable
 # Включить оптимизацию доставки (значение по умолчанию)
 # DeliveryOptimization -Enable
 
+# NOTE: Casual users may want to comment this
+# NOTE: Some users may want to comment this
 # Do not let Windows manage my default printer
 # Не разрешать Windows управлять принтером, используемым по умолчанию
 WindowsManageDefaultPrinter -Disable
@@ -655,6 +687,8 @@ WindowsManageDefaultPrinter -Disable
 	Отключить компоненты Windows, используя всплывающее диалоговое окно
 	Если вы хотите оставить параметр "Параметры мультимедиа" в дополнительных параметрах схемы управления питанием, не отключайте "Компоненты для работы с мультимедиа"
 #>
+# NOTE: Casual users may want to comment this
+# NOTE: Some users may want to comment this
 WindowsFeatures -Disable
 
 # Enable the Windows features using the pop-up dialog box
@@ -669,6 +703,7 @@ WindowsCapabilities -Uninstall
 # Установить дополнительные компоненты, используя всплывающее диалоговое окно
 # WindowsCapabilities -Install
 
+# NOTE: Some users may want to comment this
 # Receive updates for other Microsoft products
 # Получать обновления для других продуктов Майкрософт
 UpdateMicrosoftProducts -Enable
@@ -677,6 +712,7 @@ UpdateMicrosoftProducts -Enable
 # Не получать обновления для других продуктов Майкрософт (значение по умолчанию)
 # UpdateMicrosoftProducts -Disable
 
+# NOTE: Some users may want to comment this
 # Notify me when a restart is required to finish updating
 # Уведомлять меня о необходимости перезагрузки для завершения обновления
 RestartNotification -Show
@@ -685,6 +721,9 @@ RestartNotification -Show
 # Не yведомлять меня о необходимости перезагрузки для завершения обновления (значение по умолчанию)
 # RestartNotification -Hide
 
+# NOTE: Some users may want to comment this
+# NOTE: Casual users may want to comment this
+# NOTE: Power users may want to comment this
 # Restart as soon as possible to finish updating
 # Перезапустить устройство как можно быстрее, чтобы завершить обновление
 RestartDeviceAfterUpdate -Enable
@@ -693,6 +732,9 @@ RestartDeviceAfterUpdate -Enable
 # Не перезапускать устройство как можно быстрее, чтобы завершить обновление (значение по умолчанию)
 # RestartDeviceAfterUpdate -Disable
 
+# NOTE: Some users may want to comment this
+# NOTE: Casual users may want to comment this
+# NOTE: Power users may want to comment this
 # Automatically adjust active hours for me based on daily usage
 # Автоматически изменять период активности для этого устройства на основе действий
 ActiveHours -Automatically
@@ -701,6 +743,7 @@ ActiveHours -Automatically
 # Вручную изменять период активности для этого устройства на основе действий (значение по умолчанию)
 # ActiveHours -Manually
 
+# NOTE: Some users may want to comment this
 # Do not get the latest updates as soon as they're available (default value)
 # Не получать последние обновления, как только они будут доступны (значение по умолчанию)
 WindowsLatestUpdate -Disable
@@ -709,6 +752,7 @@ WindowsLatestUpdate -Disable
 # Получайте последние обновления, как только они будут доступны
 # WindowsLatestUpdate -Enable
 
+# NOTE: Laptop users may want to comment this
 # Set power plan on "High performance". Not recommended for laptops
 # Установить схему управления питанием на "Высокая производительность". Не рекомендуется для ноутбуков
 PowerPlan -High
@@ -717,6 +761,7 @@ PowerPlan -High
 # Установить схему управления питанием на "Сбалансированная" (значение по умолчанию)
 # PowerPlan -Balanced
 
+# NOTE: Laptop users may want to comment this
 # Do not allow the computer to turn off the network adapters to save power. Not recommended for laptops
 # Запретить отключение всех сетевых адаптеров для экономии энергии. Не рекомендуется для ноутбуков
 NetworkAdaptersSavePower -Disable
@@ -725,6 +770,8 @@ NetworkAdaptersSavePower -Disable
 # Разрешить отключение всех сетевых адаптеров для экономии энергии (значение по умолчанию)
 # NetworkAdaptersSavePower -Enable
 
+# NOTE: Some users may want to comment this
+# NOTE: Casual users may want to comment this
 # Override for default input method: English
 # Переопределить метод ввода по умолчанию: английский
 InputMethod -English
@@ -742,6 +789,8 @@ InputMethod -English
 	Пользовательские файлы и папки не будут перемещены в новое расположение. Переместите их вручную
 	По умолчанию они располагаются в папке %USERPROFILE%
 #>
+# NOTE: Some users may want to comment this
+# NOTE: Casual users may want to comment this
 Set-UserShellFolderLocation -Root
 
 <#
@@ -766,6 +815,7 @@ Set-UserShellFolderLocation -Root
 #>
 # Set-UserShellFolderLocation -Default
 
+# NOTE: Some users may want to uncomment this
 # Use .NET Framework 4.8.1 for old apps
 # Использовать .NET Framework 4.8.1 для устаревших программ
 # LatestInstalled.NET -Enable
@@ -774,6 +824,7 @@ Set-UserShellFolderLocation -Root
 # Не использовать .NET Framework 4.8.1 для устаревших программ (значение по умолчанию)
 # LatestInstalled.NET -Disable
 
+# NOTE: Some users may want to comment this
 # Save screenshots on the Desktop when pressing Windows+PrtScr or using Windows+Shift+S
 # Сохранять скриншоты по нажатию Windows+PrtScr или Windows+Shift+S на рабочий стол
 WinPrtScrFolder -Desktop
@@ -789,6 +840,7 @@ WinPrtScrFolder -Desktop
 	Автоматически запускать средства устранения неполадок, а затем уведомлять
 	Чтобы заработала данная функция, уровень сбора диагностических данных ОС будет установлен на "Необязательные диагностические данные" и включится создание отчетов об ошибках Windows
 #>
+# NOTE: Some users may want to comment this
 RecommendedTroubleshooting -Automatically
 
 <#
@@ -808,6 +860,7 @@ ReservedStorage -Disable
 # Включить зарезервированное хранилище (значение по умолчанию)
 # ReservedStorage -Enable
 
+# NOTE: Some users may want to comment this
 # Disable help lookup via F1
 # Отключить открытие справки по нажатию F1
 F1HelpPage -Disable
@@ -816,6 +869,7 @@ F1HelpPage -Disable
 # Включить открытие справки по нажатию F1 (значение по умолчанию)
 # F1HelpPage -Enable
 
+# NOTE: Some users may want to comment this
 # Enable Num Lock at startup
 # Включить Num Lock при загрузке
 NumLock -Enable
@@ -824,6 +878,7 @@ NumLock -Enable
 # Выключить Num Lock при загрузке (значение по умолчанию)
 # NumLock -Disable
 
+# NOTE: Some users may want to uncomment this
 # Disable Caps Lock
 # Выключить Caps Lock
 # CapsLock -Disable
@@ -832,6 +887,7 @@ NumLock -Enable
 # Включить Caps Lock (значение по умолчанию)
 # CapsLock -Enable
 
+# NOTE: Some users may want to comment this
 # Turn off pressing the Shift key 5 times to turn Sticky keys
 # Выключить залипание клавиши Shift после 5 нажатий
 StickyShift -Disable
@@ -840,6 +896,8 @@ StickyShift -Disable
 # Включить залипание клавиши Shift после 5 нажатий (значение по умолчанию)
 # StickyShift -Enable
 
+# NOTE: Some users may want to comment this
+# NOTE: Casual users may want to comment this
 # Don't use AutoPlay for all media and devices
 # Не использовать автозапуск для всех носителей и устройств
 Autoplay -Disable
@@ -848,6 +906,7 @@ Autoplay -Disable
 # Использовать автозапуск для всех носителей и устройств (значение по умолчанию)
 # Autoplay -Enable
 
+# NOTE: Some users may want to comment this
 # Disable thumbnail cache removal
 # Отключить удаление кэша миниатюр
 ThumbnailCacheRemoval -Disable
@@ -856,6 +915,7 @@ ThumbnailCacheRemoval -Disable
 # Включить удаление кэша миниатюр (значение по умолчанию)
 # ThumbnailCacheRemoval -Enable
 
+# NOTE: Some users may want to comment this
 # Automatically saving my restartable apps and restart them when I sign back in
 # Автоматически сохранять мои перезапускаемые приложения из системы и перезапускать их при повторном входе
 SaveRestartableApps -Enable
@@ -864,6 +924,8 @@ SaveRestartableApps -Enable
 # Выключить автоматическое сохранение моих перезапускаемых приложений из системы и перезапускать их при повторном входе (значение по умолчанию)
 # SaveRestartableApps -Disable
 
+# NOTE: Some users may want to comment this
+# NOTE: Casual users may want to comment this
 # Do not restore previous folder windows at logon (default value)
 # Не восстанавливать прежние окна папок при входе в систему (значение по умолчанию)
 RestorePreviousFolders -Disable
@@ -872,6 +934,9 @@ RestorePreviousFolders -Disable
 # Восстанавливать прежние окна папок при входе в систему
 # RestorePreviousFolders -Enable
 
+# NOTE: Some users may want to comment this
+# NOTE: Casual users may want to comment this
+# NOTE: Power users may want to comment this
 # Enable "Network Discovery" and "File and Printers Sharing" for workgroup networks
 # Включить сетевое обнаружение и общий доступ к файлам и принтерам для рабочих групп
 NetworkDiscovery -Enable
@@ -880,6 +945,7 @@ NetworkDiscovery -Enable
 # Выключить сетевое обнаружение и общий доступ к файлам и принтерам для рабочих групп (значение по умолчанию)
 # NetworkDiscovery -Disable
 
+# NOTE: Some users may want to apply this (Read the comment)
 <#
 	Register app, calculate hash, and associate with an extension with the "How do you want to open this" pop-up hidden
 	Зарегистрировать приложение, вычислить хэш и ассоциировать его с расширением без всплывающего окна "Каким образом вы хотите открыть этот файл?"
@@ -894,6 +960,7 @@ NetworkDiscovery -Enable
 # Export all Windows associations into Application_Associations.json file to script root folder
 # Export-Associations
 
+# NOTE: Some users may want to uncomment this (Read the comment)
 <#
 	Импортировать все ассоциации в Windows из файла Application_Associations.json
 	Вам необходимо установить все приложения согласно экспортированному файлу Application_Associations.json, чтобы восстановить все ассоциации
@@ -903,6 +970,7 @@ NetworkDiscovery -Enable
 #>
 # Import-Associations
 
+# NOTE: Some users may want to comment this
 # Set Windows Terminal as default terminal app to host the user interface for command-line applications
 # Установить Windows Terminal как приложение терминала по умолчанию для размещения пользовательского интерфейса для приложений командной строки
 DefaultTerminalApp -WindowsTerminal
@@ -919,6 +987,9 @@ Install-VCRedist -Redistributables 2015_2026_x86, 2015_2026_x64
 # Установить последнюю версию .NET Desktop Runtime 8, 9, 10 x64. Требуется соединение с интернетом
 Install-DotNetRuntimes -Runtimes NET8, NET9, NET10
 
+# NOTE: Some users may want to comment this
+# NOTE: Casual users may want to comment this
+# NOTE: Power users may want to comment this
 # Enable proxying only blocked sites from the unified registry of Roskomnadzor. The function is applicable for Russia only
 # Включить проксирование только заблокированных сайтов из единого реестра Роскомнадзора. Функция применима только для России
 # https://antizapret.prostovpn.org
@@ -929,6 +1000,7 @@ RKNBypass -Enable
 # https://antizapret.prostovpn.org
 # RKNBypass -Disable
 
+# NOTE: Some users may want to comment this
 # List Microsoft Edge channels to prevent desktop shortcut creation upon its update
 # Перечислите каналы Microsoft Edge для предотвращения создания ярлыков на рабочем столе после его обновления
 PreventEdgeShortcutCreation -Channels Stable, Beta, Dev, Canary
@@ -937,6 +1009,8 @@ PreventEdgeShortcutCreation -Channels Stable, Beta, Dev, Canary
 # Не предотвращать создание ярлыков на рабочем столе при обновлении Microsoft Edge (значение по умолчанию)
 # PreventEdgeShortcutCreation -Disable
 
+# NOTE: Some users may want to comment this
+# NOTE: Power users may want to comment this
 # Back up the system registry to %SystemRoot%\System32\config\RegBack folder when PC restarts and create a RegIdleBackup in the Task Scheduler task to manage subsequent backups
 # Создавать копии реестра при перезагрузке ПК и задание RegIdleBackup в Планировщике для управления последующими резервными копиями
 RegistryBackup -Enable
@@ -975,12 +1049,14 @@ Uninstall-UWPApps
 	Отключить Xbox Game Bar
 	Чтобы предотвратить появление предупреждения "Вам понадобится новое приложение, чтобы открыть этот ms-gamingoverlay", вам необходимо отключить приложение Xbox Game Bar, даже если вы удалили его раньше
 #>
+# NOTE: Some users may want to comment this
 XboxGameBar -Disable
 
 # Enable Xbox Game Bar (default value)
 # Включить Xbox Game Bar (значение по умолчанию)
 # XboxGameBar -Enable
 
+# NOTE: Some users may want to comment this
 # Disable Xbox Game Bar tips
 # Отключить советы Xbox Game Bar
 XboxGameTips -Disable
@@ -1132,16 +1208,20 @@ SaveZoneInformation -Disable
 	Включить DNS-over-HTTPS для IPv4
 	Действительные IPv4-адреса: 1.0.0.1, 1.1.1.1, 149.112.112.112, 8.8.4.4, 8.8.8.8, 9.9.9.9
 #>
+# NOTE: Some users may want to comment this
 DNSoverHTTPS -Enable -PrimaryDNS 1.0.0.1 -SecondaryDNS 1.1.1.1
 
 # Disable DNS-over-HTTPS for IPv4 (default value)
 # Выключить DNS-over-HTTPS для IPv4 (значение по умолчанию)
 # DNSoverHTTPS -Disable
 
+# NOTE: Some users may want to uncomment this
 # Enable DNS-over-HTTPS via Comss.one DNS server. Applicable for Russia only
 # Включить DNS-over-HTTPS для IPv4 через DNS-сервер Comss.one. Применимо только для России
 # DNSoverHTTPS -ComssOneDNS
 
+# NOTE: Some users may want to uncomment this
+# NOTE: Power users may want to uncomment this
 # Enable Local Security Authority protection to prevent code injection
 # Включить защиту локальной системы безопасности, чтобы предотвратить внедрение кода
 # LocalSecurityAuthority -Enable
@@ -1152,6 +1232,8 @@ DNSoverHTTPS -Enable -PrimaryDNS 1.0.0.1 -SecondaryDNS 1.1.1.1
 #endregion Microsoft Defender & Security
 
 #region Context menu
+# NOTE: Some users may want to comment this
+# NOTE: Casual users may want to comment this
 # Show the "Extract all" item in the Windows Installer (.msi) context menu
 # Отобразить пункт "Извлечь все" в контекстное меню Windows Installer (.msi)
 MSIExtractContext -Show
@@ -1160,6 +1242,8 @@ MSIExtractContext -Show
 # Скрыть пункт "Извлечь все" из контекстного меню Windows Installer (.msi) (значение по умолчанию)
 # MSIExtractContext -Hide
 
+# NOTE: Some users may want to comment this
+# NOTE: Casual users may want to comment this
 # Show the "Install" item in the Cabinet (.cab) filenames extensions context menu
 # Отобразить пункт "Установить" в контекстное меню .cab архивов
 CABInstallContext -Show
@@ -1168,6 +1252,8 @@ CABInstallContext -Show
 # Скрыть пункт "Установить" из контекстного меню .cab архивов (значение по умолчанию)
 # CABInstallContext -Hide
 
+# NOTE: Some users may want to comment this
+# NOTE: Casual users may want to comment this
 # Hide the "Edit with Clipchamp" item from the media files context menu
 # Скрыть пункт "Редактировать в Climpchamp" из контекстного меню
 EditWithClipchampContext -Hide
@@ -1176,6 +1262,8 @@ EditWithClipchampContext -Hide
 # Отобразить пункт "Редактировать в Climpchamp" в контекстном меню (значение по умолчанию)
 # EditWithClipchampContext -Show
 
+# NOTE: Some users may want to comment this
+# NOTE: Casual users may want to comment this
 # Hide the "Edit with Photos" item from the media files context menu
 # Скрыть пункт "Изменить с помощью приложения "Фотографии"" из контекстного меню
 EditWithPhotosContext -Hide
@@ -1184,6 +1272,8 @@ EditWithPhotosContext -Hide
 # Отобразить пункт "Изменить с помощью приложения "Фотографии"" в контекстном меню (значение по умолчанию)
 # EditWithPhotosContext -Show
 
+# NOTE: Some users may want to comment this
+# NOTE: Casual users may want to comment this
 # Hide the "Edit with Paint" item from the media files context menu
 # Скрыть пункт "Изменить с помощью приложения "Paint"" из контекстного меню
 EditWithPaintContext -Hide
@@ -1192,6 +1282,8 @@ EditWithPaintContext -Hide
 # Отобразить пункт "Изменить с помощью приложения "Paint"" в контекстном меню (значение по умолчанию)
 # EditWithPaintContext -Show
 
+# NOTE: Some users may want to comment this
+# NOTE: Casual users may want to comment this
 # Hide the "Print" item from the .bat and .cmd context menu
 # Скрыть пункт "Печать" из контекстного меню .bat и .cmd файлов
 PrintCMDContext -Hide
@@ -1200,6 +1292,8 @@ PrintCMDContext -Hide
 # Отобразить пункт "Печать" в контекстном меню .bat и .cmd файлов (значение по умолчанию)
 # PrintCMDContext -Show
 
+# NOTE: Some users may want to comment this
+# NOTE: Casual users may want to comment this
 # Hide the "Compressed (zipped) Folder" item from the "New" context menu
 # Скрыть пункт "Сжатая ZIP-папка" из контекстного меню "Создать"
 CompressedFolderNewContext -Hide
@@ -1208,6 +1302,8 @@ CompressedFolderNewContext -Hide
 # Отобразить пункт "Сжатая ZIP-папка" в контекстном меню "Создать" (значение по умолчанию)
 # CompressedFolderNewContext -Show
 
+# NOTE: Some users may want to comment this
+# NOTE: Casual users may want to comment this
 # Enable the "Open", "Print", and "Edit" context menu items for more than 15 items selected
 # Включить элементы контекстного меню "Открыть", "Изменить" и "Печать" при выделении более 15 элементов
 MultipleInvokeContext -Enable
@@ -1216,6 +1312,8 @@ MultipleInvokeContext -Enable
 # Отключить элементы контекстного меню "Открыть", "Изменить" и "Печать" при выделении более 15 элементов (значение по умолчанию)
 # MultipleInvokeContext -Disable
 
+# NOTE: Some users may want to comment this
+# NOTE: Casual users may want to comment this
 # Hide the "Look for an app in the Microsoft Store" item in the "Open with" dialog
 # Скрыть пункт "Поиск приложения в Microsoft Store" в диалоге "Открыть с помощью"
 UseStoreOpenWith -Hide
@@ -1224,6 +1322,8 @@ UseStoreOpenWith -Hide
 # Отобразить пункт "Поиск приложения в Microsoft Store" в диалоге "Открыть с помощью" (значение по умолчанию)
 # UseStoreOpenWith -Show
 
+# NOTE: Some users may want to comment this
+# NOTE: Casual users may want to comment this
 # Show the "Open in Windows Terminal" item in the folders context menu (default value)
 # Отобразить пункт "Открыть в Терминале Windows" в контекстном меню папок (значение по умолчанию)
 OpenWindowsTerminalContext -Show
@@ -1232,6 +1332,8 @@ OpenWindowsTerminalContext -Show
 # Скрыть пункт "Открыть в Терминале Windows" в контекстном меню папок
 # OpenWindowsTerminalContext -Hide
 
+# NOTE: Some users may want to comment this
+# NOTE: Casual users may want to comment this
 # Open Windows Terminal in context menu as administrator by default
 # Открывать Windows Terminal из контекстного меню от имени администратора по умолчанию
 OpenWindowsTerminalAdminContext -Enable
