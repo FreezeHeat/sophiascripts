@@ -1177,7 +1177,7 @@ DNSoverHTTPS -Cloudflare
 # NOTE: Some users may want to uncomment this
 # NOTE: Casual users may want to uncomment this
 # NOTE: Power users may want to uncomment this
-	The valid IPv4 addresses: 1.0.0.1, 1.1.1.1, 149.112.112.112, 8.8.4.4, 8.8.8.8, 9.9.9.9
+# The valid IPv4 addresses: 1.0.0.1, 1.1.1.1, 149.112.112.112, 8.8.4.4, 8.8.8.8, 9.9.9.9
 # Set up DNS from Comss.one DNS using DNS-over-HTTPS
 # Установить DNS от Comss.one, используя DNS-over-HTTPS
 # DNSoverHTTPS -ComssOne
