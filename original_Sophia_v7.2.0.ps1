@@ -1,12 +1,12 @@
 ﻿<#
 	.SYNOPSIS
-	Default preset file for "Sophia Script for Windows 11"
+	Default preset file for "Sophia Script for Windows"
 
 	.VERSION
-	7.1.5
+	7.2.0
 
 	.DATE
-	15.04.2026
+	31.07.2026
 
 	.COPYRIGHT
 	(c) 2014—2026 Team Sophia
@@ -45,7 +45,6 @@
 
 	.DONATE
 	https://ko-fi.com/farag
-	https://boosty.to/teamsophia
 
 	.NOTES
 	https://forum.ru-board.com/topic.cgi?forum=62&topic=30617#15
@@ -68,7 +67,7 @@ $Global:Failed = $false
 # Unload and import private functions and module
 Get-ChildItem function: | Where-Object {$_.ScriptBlock.File -match "Sophia_Script_for_Windows"} | Remove-Item -Force
 Remove-Module -Name SophiaScript -Force -ErrorAction Ignore
-Import-Module -Name $PSScriptRoot\Manifest\SophiaScript.psd1 -PassThru -Force
+Import-Module -Name $PSScriptRoot\Module\Manifest\SophiaScript.psd1 -PassThru -Force
 Get-ChildItem -Path $PSScriptRoot\Module\private | Foreach-Object -Process {. $_.FullName}
 
 # "-Warning" argument enables and disables a warning message about whether the preset file was customized
@@ -523,35 +522,51 @@ NavigationPaneExpand -Disable
 # Развернуть до открытой папки область навигации
 # NavigationPaneExpand -Enable
 
-# Hide recently added apps in Start
+# Hide recently added apps on Start
 # Не показывать недавно добавленные приложения на начальном экране
 RecentlyAddedStartApps -Hide
 
-# Show recently added apps in Start (default value)
+# Show recently added apps on Start (default value)
 # Показывать недавно добавленные приложения на начальном экране (значение по умолчанию)
 # RecentlyAddedStartApps -Show
 
-# Hide most used apps in Start (default value)
+# Unpin all Start tiles
+# Открепить все ярлыки от начального экрана
+# UnpinAllStartTiles
+
+# Use Category View for All Apps on Start (default value)
+# Используйте просмотр по категориям для всех приложений на начальном экране (значение по умолчанию)
+# StartAppsView -Category
+
+# Use Grid View for All Apps on Start
+# Используйте просмотр в виде сетки для всех приложений на начальном экране
+# StartAppsView -Grid
+
+# Use List View for All Apps on Start
+# Используйте просмотр в виде списка для всех приложений на начальном экране
+StartAppsView -List
+
+# Hide most used apps on Start (default value)
 # Не показывать наиболее часто используемые приложения на начальном экране (значение по умолчанию)
 MostUsedStartApps -Hide
 
-# Show most used Apps in Start
+# Show most used Apps on Start
 # Показывать наиболее часто используемые приложения на начальном экране
 # MostUsedStartApps -Show
 
-# Remove Recommended section in Start
+# Remove Recommended section on Start
 # Удалить раздел "Рекомендуем" на начальном экране
 StartRecommendedSection -Hide
 
-# Show Recommended section in Start (default value)
+# Show Recommended section on Start (default value)
 # Показывать раздел "Рекомендуем" на начальном экране
 # StartRecommendedSection -Show
 
-# Hide recommendations for tips, shortcuts, new apps, and more in Start
+# Hide recommendations for tips, shortcuts, new apps, and more on Start
 # Не показать рекомендации с советами, сочетаниями клавиш, новыми приложениями и т. д. на начальном экране
 StartRecommendationsTips -Hide
 
-# Show recommendations for tips, shortcuts, new apps, and more in Start (default value)
+# Show recommendations for tips, shortcuts, new apps, and more on Start (default value)
 # Показать рекомендации с советами, сочетаниями клавиш, новыми приложениями и т. д. на начальном экране (значение по умолчанию)
 # StartRecommendationsTips -Show
 
@@ -829,14 +844,6 @@ RestorePreviousFolders -Disable
 # Restore previous folder windows at logon
 # Восстанавливать прежние окна папок при входе в систему
 # RestorePreviousFolders -Enable
-
-# Enable "Network Discovery" and "File and Printers Sharing" for workgroup networks
-# Включить сетевое обнаружение и общий доступ к файлам и принтерам для рабочих групп
-NetworkDiscovery -Enable
-
-# Disable "Network Discovery" and "File and Printers Sharing" for workgroup networks (default value)
-# Выключить сетевое обнаружение и общий доступ к файлам и принтерам для рабочих групп (значение по умолчанию)
-# NetworkDiscovery -Disable
 
 <#
 	Register app, calculate hash, and associate with an extension with the "How do you want to open this" pop-up hidden
